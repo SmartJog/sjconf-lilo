@@ -1,0 +1,15 @@
+Source: sjconf-lilo
+Priority: optional
+Section: admin
+Maintainer: Philippe BRIDANT <philippe.bridant@smartjog.com>
+Uploaders: Jean-Philippe Garcia Ballester <jeanphilippe.garciaballester@smartjog.com>
+Build-Depends: cdbs (>= 0.4.43), debhelper (>= 5.0.38), txt2tags, python-central (>= 0.5.6)
+XS-Python-Version: current
+Standards-Version: 3.7.3
+
+Package: sjconf-lilo
+Architecture: all
+Depends: ${python:Depends}, sjconf1 (>= 1.3.3)
+XB-Python-Version: ${python:Versions}
+Description: sjconf plugin for lilo
+ This package provides a plugin to manage lilo using sjconf.

@@ -1,0 +1,35 @@
+import sjconf
+
+class Plugin(sjconf.PluginWithTemplate):
+
+    VERSION = '0.0.1'
+
+    class ConfSection(sjconf.Conf.ConfSection):
+
+        def __getitem__(self, key):
+            if key == 'options':
+                return "\n".join(self["options_list"])
+
+            if key == 'images':
+                content=""
+                for image, image_conf in self["all_images"].iteritems():
+		    for key, value in image_conf.iteritems():
+                        if key != 'options':
+                            content+="%s=%s" % (key, value)
+                        options=value.split(",")
+                    content+="\n".join(options)
+                return content
+            return sjconf.Conf.ConfSection.__getitem__(self, key)
+
+    def __init__(self, *args, **kw):
+        sjconf.PluginWithTemplate.__init__(self, *args, **kw)
+        self.conf["lilo"]["all_images"] = {}
+        for section, value in self.conf.iteritems():
+            if section != "lilo":
+                self.conf["lilo"]["all_images"][section] = value
+
+    def conf_files_path(self):
+        return (self.sjconf.etc_dir + '/lilo.conf',)
+
+    def conf_types(self):
+        return (('lilo', 'images', 'list'),('lilo', 'options', 'list'),)

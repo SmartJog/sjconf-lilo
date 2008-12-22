@@ -1,0 +1,34 @@
+#!/bin/sh
+set -e
+
+#DEBHELPER#
+
+PLUGIN_NAMES="lilo"
+
+for PLUGIN_NAME in $PLUGIN_NAMES
+do
+	if ! sjconf --list-plugins | grep "^Plugin $PLUGIN_NAME$" > /dev/null
+	then
+		sjconf --install-conf --link /etc/sjconf-lilo/confs/$PLUGIN_NAME.conf
+		if [ -e /etc/sjconf-lilo/templates/$PLUGIN_NAME ]
+		then
+			sjconf --install-template --link /etc/sjconf-lilo/templates/$PLUGIN_NAME
+		fi
+		sjconf --install-plugin --link /usr/lib/sjconf-lilo/plugins/$PLUGIN_NAME.py
+		sjconf --enable-plugin $PLUGIN_NAME
+	fi
+done
+
+if [ $2 ] && dpkg --compare-versions $2 '<' 0.2.1~
+then
+	for PLUGIN_NAME in lilo
+	do
+		sjconf --uninstall-conf $PLUGIN_NAME
+		rm -f /etc/sjconf-lilo/conf/$PLUGIN_NAME.conf
+	done
+	for PLUGIN_NAME in lilo
+	do
+		sjconf --install-conf --link /etc/sjconf-lilo/confs/$PLUGIN_NAME.conf
+	done
+	rmdir /etc/sjconf-lilo/conf || true
+fi
