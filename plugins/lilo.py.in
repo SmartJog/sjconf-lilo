@@ -23,14 +23,27 @@ class Plugin(sjconf.PluginWithTemplate):
 			    options=value.split(",")
 		    content+="     " + "     \n".join(options)+'\n'
                 return content
+
+            if key == 'configuration':
+                content=""
+                for key, value in self["conf"].iteritems():
+		    if key not in ['conf', 'all_images', 'template', 'lilo_conf', 'images', 'options']:
+			content += "%s=%s\n" % (key, value)
+			print value
+                return content
+	    
             return sjconf.Conf.ConfSection.__getitem__(self, key)
 
     def __init__(self, *args, **kw):
         sjconf.PluginWithTemplate.__init__(self, *args, **kw)
+        self.conf["lilo"]["lilo_conf"] = {}
         self.conf["lilo"]["all_images"] = {}
         for section, value in self.conf.iteritems():
             if section != "lilo":
                 self.conf["lilo"]["all_images"][section] = value
+	    else:
+                self.conf["lilo"]["conf"] = value
+
 
     def conf_files_path(self):
         return (self.sjconf.etc_dir + '/lilo.conf',)
