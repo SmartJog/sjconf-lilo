@@ -2,7 +2,7 @@ import sjconf
 
 class Plugin(sjconf.PluginWithTemplate):
 
-    VERSION = '0.0.1'
+    VERSION = '@PACKAGE_VERSION@'
 
     class ConfSection(sjconf.Conf.ConfSection):
 
@@ -15,9 +15,13 @@ class Plugin(sjconf.PluginWithTemplate):
                 for image, image_conf in self["all_images"].iteritems():
 		    for key, value in image_conf.iteritems():
                         if key != 'options':
-                            content+="%s=%s" % (key, value)
-                        options=value.split(",")
-                    content+="\n".join(options)
+			    if key != "image":
+				content+="     %s=%s\n" % (key, value)
+			    else:
+				content+="%s=%s\n" % (key, value)
+			else:
+			    options=value.split(",")
+		    content+="     " + "     \n".join(options)+'\n'
                 return content
             return sjconf.Conf.ConfSection.__getitem__(self, key)
 
