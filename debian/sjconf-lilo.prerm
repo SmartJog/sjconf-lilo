@@ -5,7 +5,7 @@ set -e
 
 PLUGIN_NAMES='lilo'
 
-if [ "$1" = 'remove' ] || ([ "$1" = 'upgrade' ] && dpkg --compare-versions $2 '<' 0.2.1~)
+if [ "$1" = 'remove' ]
 then
 	for PLUGIN_NAME in $PLUGIN_NAMES
 	do
@@ -17,15 +17,4 @@ then
 		fi
 		sjconf --uninstall-conf $PLUGIN_NAME || true
 	done
-fi
-
-if [ $1 = 'upgrade' ] && dpkg --compare-versions $2 '<' 0.2.1~
-then
-	mkdir -p /etc/sjconf-lilo/
-    sjconf --uninstall-conf lilo
-    sjconf --install-conf --link /etc/sjconf-lilo/confs/lilo.conf
-    if [ -e /etc/sjconf-lilo/templates/lilo.conf ]
-    then
-        sjconf --install-template --link /etc/sjconf-lilo/templates/lilo.conf
-    fi
 fi
