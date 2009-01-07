@@ -2,6 +2,8 @@ SUBDIRS = doc
 
 EXTRA_DIST = confs templates plugins
 
+all: plugins/lilo.py
+
 install-data-hook:
 	$(sjconf) --install-conf confs/lilo.conf
 	$(sjconf) --install-template templates/lilo
