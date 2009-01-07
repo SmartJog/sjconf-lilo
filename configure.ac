@@ -17,6 +17,9 @@ AC_ARG_WITH([sjconf],
 AS_IF([test "x$sjconf" = xno], [sjconf=true], [ : ])
 AS_IF([test "x$sjconf" = xyes], [sjconf=$default_sjconf], [ : ])
 
+AC_CHECK_PROG(sjconf_exists, $sjconf, yes, no)
+AS_IF([test "x$sjconf_exists" = xno], [AC_MSG_ERROR([$sjconf not found])])
+
 AC_SUBST([sjconf])
 
 AC_CONFIG_FILES([Makefile \
