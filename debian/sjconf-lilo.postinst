@@ -3,18 +3,18 @@ set -e
 
 #DEBHELPER#
 
-PLUGIN_NAMES="lilo"
+PLUGINS="lilo"
 
-for PLUGIN_NAME in $PLUGIN_NAMES
+for plugin in $PLUGINS
 do
-	if ! sjconf --list-plugins | grep "^Plugin $PLUGIN_NAME$" > /dev/null
+	if ! sjconf --list-plugins | grep "^Plugin $plugin$" > /dev/null
 	then
-		sjconf --install-conf --link /etc/sjconf-lilo/confs/$PLUGIN_NAME.conf
-		if [ -e /etc/sjconf-lilo/templates/$PLUGIN_NAME ]
+		sjconf --install-conf --link /etc/sjconf-lilo/confs/$plugin.conf
+		if [ -e /etc/sjconf-lilo/templates/$plugin ]
 		then
-			sjconf --install-template --link /etc/sjconf-lilo/templates/$PLUGIN_NAME
+			sjconf --install-template --link /etc/sjconf-lilo/templates/$plugin
 		fi
-		sjconf --install-plugin --link /usr/lib/sjconf-lilo/plugins/$PLUGIN_NAME.py
-		sjconf --enable-plugin $PLUGIN_NAME
+		sjconf --install-plugin --link /usr/lib/sjconf-lilo/plugins/$plugin.py
+		sjconf --enable-plugin $plugin
 	fi
 done
