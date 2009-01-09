@@ -1,17 +1,7 @@
+ACLOCAL_AMFLAGS = -I /usr/share/sjconf/autotools
+
 SUBDIRS = doc
 
-EXTRA_DIST = confs templates plugins
+SJCONF_PLUGINS_WITH_TEMPLATE = lilo
 
-all: plugins/lilo.py
-
-install-data-hook:
-	$(sjconf) --install-conf confs/lilo.conf
-	$(sjconf) --install-template templates/lilo
-	$(sjconf) --install-plugin plugins/lilo.py
-	$(sjconf) --enable-plugin lilo
-
-uninstall-hook:
-	$(sjconf) --disable-plugin lilo
-	$(sjconf) --uninstall-plugin lilo
-	$(sjconf) --uninstall-template lilo
-	$(sjconf) --uninstall-conf lilo
+@AM_SJCONF@

@@ -6,24 +6,13 @@ AC_PREREQ(2.52)
 
 AM_INIT_AUTOMAKE([foreign])
 
-dnl Default value for sjconf
-default_sjconf=sjconf
-
-AC_ARG_WITH([sjconf],
-            [AS_HELP_STRING([--with-sjconf], [specifies path to sjconf binary])],
-            [sjconf=$withval],
-            [sjconf=$default_sjconf])
-
-AS_IF([test "x$sjconf" = xno], [sjconf=true], [ : ])
-AS_IF([test "x$sjconf" = xyes], [sjconf=$default_sjconf], [ : ])
-
-AC_CHECK_PROG(sjconf_exists, $sjconf, yes, no)
-AS_IF([test "x$sjconf_exists" = xno], [AC_MSG_ERROR([$sjconf not found])])
-
-AC_SUBST([sjconf])
+AC_PROG_SJCONF
 
 AC_CONFIG_FILES([Makefile \
                  doc/Makefile \
+                 confs/Makefile \
                  plugins/lilo.py \
+                 templates/Makefile \
+                 templates/lilo/Makefile \
                  ])
 AC_OUTPUT

@@ -1,4 +1,4 @@
 plugins/*.py usr/lib/sjconf-lilo/plugins
-templates etc/sjconf-lilo
-confs /etc/sjconf-lilo
+templates/lilo/lilo.conf etc/sjconf-lilo/templates/lilo
+confs/lilo.conf /etc/sjconf-lilo/confs
 debian/tmp/usr/share/man
