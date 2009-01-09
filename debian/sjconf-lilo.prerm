@@ -3,18 +3,17 @@ set -e
 
 #DEBHELPER#
 
-PLUGIN_NAMES='lilo'
+PLUGINS="lilo"
 
 if [ "$1" = 'remove' ]
 then
-	for PLUGIN_NAME in $PLUGIN_NAMES
+	for plugin in $PLUGINS
 	do
-		sjconf --disable-plugin $PLUGIN_NAME || true
-		sjconf --uninstall-plugin $PLUGIN_NAME || true
-		if [ -e /etc/sjconf-lilo/templates/$PLUGIN_NAME ]
-		then
-			sjconf --uninstall-template $PLUGIN_NAME || true
+		sjconf --disable-plugin $plugin || true
+		sjconf --uninstall-plugin $plugin || true
+		if [ -e /etc/sjconf-lilo/templates/$plugin ]
+			 sjconf --uninstall-template $plugin || true
 		fi
-		sjconf --uninstall-conf $PLUGIN_NAME || true
+		sjconf --uninstall-conf $plugin || true
 	done
 fi
