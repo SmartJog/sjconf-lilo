@@ -1,3 +1,7 @@
 Version 0.1.0~dev
 
 	* Initial release. Closes: #1284
+	* Removed default vmlinuz and vmlinuz.old configuration from lilo base
+	configuration as it may interfer with overwriting configuration. Maybe
+	sjconf-lilo post-inst should propose to fill local configuration with
+	/boot content as lilo package does
