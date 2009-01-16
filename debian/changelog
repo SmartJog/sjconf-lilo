@@ -1,3 +1,9 @@
+sjconf-lilo (0.1.0-2) unstable; urgency=low
+
+  * Corrected prerm script (syntax error)
+
+ -- Philippe Bridant <philippe.bridant@smartjog.com>  Fri, 16 Jan 2009 10:11:20 +0100
+
 sjconf-lilo (0.1.0-1) unstable; urgency=low
 
   * Initial release. Closes: #1284
