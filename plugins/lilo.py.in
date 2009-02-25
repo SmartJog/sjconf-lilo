@@ -30,7 +30,7 @@ class Plugin(sjconf.PluginWithTemplate):
 		    if key not in ['conf', 'all_images', 'template', 'lilo_conf', 'images', 'options']:
 			content += "%s=%s\n" % (key, value)
                 return content
-	    
+
             return sjconf.Conf.ConfSection.__getitem__(self, key)
 
     def __init__(self, *args, **kw):
