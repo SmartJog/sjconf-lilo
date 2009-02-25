@@ -29,7 +29,6 @@ class Plugin(sjconf.PluginWithTemplate):
                 for key, value in self["conf"].iteritems():
 		    if key not in ['conf', 'all_images', 'template', 'lilo_conf', 'images', 'options']:
 			content += "%s=%s\n" % (key, value)
-			print value
                 return content
 	    
             return sjconf.Conf.ConfSection.__getitem__(self, key)
