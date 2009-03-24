@@ -1,8 +1,9 @@
-sjconf-lilo (0.1.1~dev-1) unstable; urgency=low
+sjconf-lilo (0.1.1-1) unstable; urgency=low
 
+  [ Nicolas Noirbent ]
   * New upstream release.
 
- -- Nicolas Noirbent <nicolas.noirbent@smartjog.com>  Wed, 25 Feb 2009 12:01:25 +0100
+ -- Thomas Meson <thomas.meson@smartjog.com>  Tue, 24 Mar 2009 14:24:32 +0100
 
 sjconf-lilo (0.1.0-2) unstable; urgency=low
 
