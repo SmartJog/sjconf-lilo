@@ -1,3 +1,9 @@
+sjconf-lilo (0.1.2~dev-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Rémi Cardona <remi.cardona@smartjog.com>  Thu, 18 Mar 2010 16:30:28 +0100
+
 sjconf-lilo (0.1.1-1) unstable; urgency=low
 
   [ Nicolas Noirbent ]
