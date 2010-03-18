@@ -1,8 +1,10 @@
 sjconf-lilo (0.1.2~dev-1) unstable; urgency=low
 
   * New upstream release.
+  * Update packaging for Lenny.
+  * Add myself to Uploaders.
 
- -- Rémi Cardona <remi.cardona@smartjog.com>  Thu, 18 Mar 2010 16:30:28 +0100
+ -- Rémi Cardona <remi.cardona@smartjog.com>  Thu, 18 Mar 2010 16:32:38 +0100
 
 sjconf-lilo (0.1.1-1) unstable; urgency=low
 
