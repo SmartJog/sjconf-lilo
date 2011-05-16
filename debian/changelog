@@ -4,8 +4,9 @@ sjconf-lilo (0.2.0~dev-1) unstable; urgency=low
   * Raise debhelper dependency (>= 7).
   * Add myself to Uploaders.
   * Add missing misc dependencies per lintian report.
+  * Raise Standards-Version to 3.9.1.
 
- -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 16 May 2011 12:26:31 +0200
+ -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 16 May 2011 12:29:36 +0200
 
 sjconf-lilo (0.1.2-1) unstable; urgency=low
 
