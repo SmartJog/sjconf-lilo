@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+PLUGINS=lilo
+
+if [ "$2" ] && dpkg --compare-versions $2 '<' 0.2.0~
+then
+    for plugin in $PLUGINS
+    do
+        if [ -e /etc/sjconf-lilo/templates/$plugin ] ; then
+            sjconf --uninstall-template $plugin || true
+        fi
+        # dpkg will preserve this file but it should not in this case
+        rm /etc/sjconf-lilo/templates/lilo/lilo.conf || true
+    done
+fi

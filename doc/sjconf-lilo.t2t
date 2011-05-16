@@ -16,15 +16,17 @@ sjconf is a configuration wrapper that handles global and server specific config
 
 The lilo plugin allows for handling the **lilo**(1) file.
 
-The only available option is the following:
+= OPTIONS =
 
-: **lilo** = //<lilo>//
+The options are simply the ones used by lilo, except for the options
+that do not need a value. These options, such as read-only, must be listed in
+the options key.
+
+Each kernel image is described in its own lilo section.
 
 
 = EXAMPLE =
 
-  **[lilo]**
-  **lilo** = //dhcp-17//
   **[lilo]**
   **boot**=/dev/md1
   **raid-extra-boot**="/dev/sda,/dev/sdb,/dev/sdc,/dev/sdd"
@@ -53,7 +55,7 @@ The only available option is the following:
 
 = AUTHOR =
 
-The sjconf lilo plugin and this manual page have been written by the **SmartJog** company.
+The lilo sjconf plugin and this manual page have been written by the **SmartJog** company.
 
 = SEE ALSO =
 

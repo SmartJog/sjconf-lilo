@@ -1,51 +1,55 @@
+import re
 import sjconf
 
-class Plugin(sjconf.PluginWithTemplate):
+class Plugin(sjconf.Plugin):
 
     VERSION = '@PACKAGE_VERSION@'
 
-    class ConfSection(sjconf.Conf.ConfSection):
-
-        def __getitem__(self, key):
-            if key == 'options':
-                return "\n".join(self["options_list"])
-
-            if key == 'images':
-                content=""
-                for image, image_conf in self["all_images"].iteritems():
-                    for key, value in image_conf.iteritems():
-                        if key != 'options':
-                            if key != "image":
-                                content+="     %s=%s\n" % (key, value)
-                            else:
-                                content+="%s=%s\n" % (key, value)
-                        else:
-                            options=value.split(",")
-                    content+="     " + "     \n".join(options)+'\n'
-                return content
-
-            if key == 'configuration':
-                content=""
-                for key, value in self["conf"].iteritems():
-                    if key not in ['conf', 'all_images', 'template', 'lilo_conf', 'images', 'options']:
-                        content += "%s=%s\n" % (key, value)
-                return content
-
-            return sjconf.Conf.ConfSection.__getitem__(self, key)
-
-    def __init__(self, *args, **kw):
-        sjconf.PluginWithTemplate.__init__(self, *args, **kw)
-        self.conf["lilo"]["lilo_conf"] = {}
-        self.conf["lilo"]["all_images"] = {}
-        for section, value in self.conf.iteritems():
-            if section != "lilo":
-                self.conf["lilo"]["all_images"][section] = value
-            else:
-                self.conf["lilo"]["conf"] = value
-
+    class InvalidSetting(sjconf.Plugin.Error):
+        def __init__(self, message):
+            self.msg = 'lilo: ' + message
 
     def conf_files_path(self):
         return (self.sjconf.etc_dir + '/lilo.conf',)
 
     def conf_types(self):
-        return (('lilo', 'images', 'list'),('lilo', 'options', 'list'),)
+        return (
+            ('lilo', 'options', 'list'),
+            (re.compile('^lilo:'), 'options', 'list'),
+        )
+
+    def file_content(self, file_path):
+        res_content = []
+
+        # Global options handling
+        for key, value in self.conf['lilo'].iteritems():
+            # XXX: images key is obsolete and needs to be removed when packages
+            # using it have been updated.
+            if key in ('options', 'images'):
+                continue
+            res_content.append('%s = %s' % (key, value))
+
+        # Validate default kernel
+        if 'lilo:' + self.conf['lilo']['default'] not in self.conf:
+            raise Plugin.InvalidSetting('Default kernel value is invalid')
+
+        # Append boolean options
+        res_content += self.conf['lilo']['options_list']
+        res_content.append('')
+
+        # Handle kernel images
+        for image in self.conf.keys():
+            if not image.startswith('lilo:'):
+                continue
+
+            res_content.append('image = %s' % self.conf[image]['image'])
+            for key, value in self.conf[image].iteritems():
+                if key in ('options', 'image'):
+                    continue
+                res_content.append('\t%s = %s' % (key, value))
+
+            # Append boolean options
+            res_content += ['\t' + option for option in self.conf[image]['options_list']]
+
+        return '\n'.join(res_content)
+

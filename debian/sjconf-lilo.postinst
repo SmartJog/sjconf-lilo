@@ -10,10 +10,6 @@ do
 	if ! sjconf --list-plugins | grep "^Plugin $plugin$" > /dev/null
 	then
 		sjconf --install-conf --link /etc/sjconf-lilo/confs/$plugin.conf
-		if [ -e /etc/sjconf-lilo/templates/$plugin ]
-		then
-			sjconf --install-template --link /etc/sjconf-lilo/templates/$plugin
-		fi
 		sjconf --install-plugin --link /usr/lib/sjconf-lilo/plugins/$plugin.py
 		sjconf --enable-plugin $plugin
 	fi

@@ -1,3 +1,7 @@
+Version 0.2.0~dev
+
+	* Rewrite as a simple sjconf.Plugin class and update man page.
+
 Version 0.1.2
 
 	* Check for txt2tags in configure.
