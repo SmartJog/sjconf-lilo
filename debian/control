@@ -9,7 +9,7 @@ Standards-Version: 3.7.3
 
 Package: sjconf-lilo
 Architecture: all
-Depends: ${python:Depends}, sjconf1 (>= 1.3.3)
+Depends: ${misc:Depends}, ${python:Depends}, sjconf1 (>= 1.3.3)
 XB-Python-Version: ${python:Versions}
 Description: sjconf plugin for lilo
  This package provides a plugin to manage lilo using sjconf.
