@@ -5,8 +5,9 @@ sjconf-lilo (0.2.0~dev-1) unstable; urgency=low
   * Add myself to Uploaders.
   * Add missing misc dependencies per lintian report.
   * Raise Standards-Version to 3.9.1.
+  * Update copyright information.
 
- -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 16 May 2011 12:29:36 +0200
+ -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 06 Jun 2011 18:06:19 +0200
 
 sjconf-lilo (0.1.2-1) unstable; urgency=low
 

@@ -1,6 +1,7 @@
 Version 0.2.0~dev
 
 	* Rewrite as a simple sjconf.Plugin class and update man page.
+	* Add license information in COPYING.
 
 Version 0.1.2
 
