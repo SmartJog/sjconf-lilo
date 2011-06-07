@@ -1,4 +1,4 @@
-Version 0.2.0~dev
+Version 0.2.0 Released on 2011/06/07
 
 	* Rewrite as a simple sjconf.Plugin class and update man page.
 	* Add license information in COPYING.

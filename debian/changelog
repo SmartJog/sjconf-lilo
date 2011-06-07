@@ -1,4 +1,4 @@
-sjconf-lilo (0.2.0~dev-1) unstable; urgency=low
+sjconf-lilo (0.2.0-1) unstable; urgency=low
 
   * New upstream release.
   * Raise debhelper dependency (>= 7).
@@ -7,7 +7,7 @@ sjconf-lilo (0.2.0~dev-1) unstable; urgency=low
   * Raise Standards-Version to 3.9.1.
   * Update copyright information.
 
- -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 06 Jun 2011 18:06:19 +0200
+ -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Tue, 07 Jun 2011 10:36:08 +0200
 
 sjconf-lilo (0.1.2-1) unstable; urgency=low
 
