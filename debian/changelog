@@ -1,8 +1,9 @@
 sjconf-lilo (0.2.0-2~dev) unstable; urgency=low
 
   * Add dependency on lilo (>= 22.8).
+  * Raise debhelper dependency (>= 8).
 
- -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Fri, 26 Aug 2011 14:28:06 +0200
+ -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Fri, 26 Aug 2011 14:29:13 +0200
 
 sjconf-lilo (0.2.0-1) unstable; urgency=low
 
