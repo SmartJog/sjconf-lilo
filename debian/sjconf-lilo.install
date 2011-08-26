@@ -1,2 +1,2 @@
-plugins/*.py usr/lib/sjconf-lilo/plugins
-confs/lilo.conf /etc/sjconf-lilo/confs
+plugins/*.py		usr/share/sjconf-lilo/plugins
+confs/lilo.conf		usr/share/sjconf-lilo/confs

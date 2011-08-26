@@ -9,8 +9,8 @@ for plugin in $PLUGINS
 do
 	if ! sjconf --list-plugins | grep "^Plugin $plugin$" > /dev/null
 	then
-		sjconf --install-conf --link /etc/sjconf-lilo/confs/$plugin.conf
-		sjconf --install-plugin --link /usr/lib/sjconf-lilo/plugins/$plugin.py
+		sjconf --install-conf --link /usr/share/sjconf-lilo/confs/$plugin.conf
+		sjconf --install-plugin --link /usr/share/sjconf-lilo/plugins/$plugin.py
 		sjconf --enable-plugin $plugin
 	fi
 done
