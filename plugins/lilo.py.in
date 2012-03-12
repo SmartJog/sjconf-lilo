@@ -29,6 +29,9 @@ class Plugin(sjconf.Plugin):
                 continue
             res_content.append('%s = %s' % (key, value))
 
+        if 'default' not in self.conf['lilo']
+            return '\n'.join(res_content)
+
         # Validate default kernel
         if 'lilo:' + self.conf['lilo']['default'] not in self.conf:
             raise Plugin.InvalidSetting('Default kernel value is invalid')
