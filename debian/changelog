@@ -1,8 +1,9 @@
 sjconf-lilo (0.2.1~dev-1) unstable; urgency=low
 
   * New upstream release.
+  * Switch to dpkg-source 3.0 (quilt) format.
 
- -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 12 Mar 2012 17:37:08 +0100
+ -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 12 Mar 2012 17:38:52 +0100
 
 sjconf-lilo (0.2.0-2) unstable; urgency=low
 
