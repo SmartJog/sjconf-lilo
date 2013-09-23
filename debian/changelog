@@ -1,7 +1,13 @@
-sjconf-lilo (0.2.1~dev-1) unstable; urgency=low
+sjconf-lilo (0.2.1-1) unstable; urgency=low
 
+  [ Gilles Dartiguelongue ]
   * New upstream release.
   * Switch to dpkg-source 3.0 (quilt) format.
+
+  [ Nicolas Godinho ]
+  * Add myself to Uploaders
+  * Add sjconf (>= 1.13.0) to Pre-Depends
+  * Modify postinst script for refactored sjconf compatibility
 
  -- Gilles Dartiguelongue <gilles.dartiguelongue@smartjog.com>  Mon, 12 Mar 2012 17:38:52 +0100
 

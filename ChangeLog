@@ -1,4 +1,4 @@
-Version 0.2.1~dev
+Version 0.2.1 Released on 2013/09/23
 
 	* Do not fail on missing default key, assume it means no kernel has been
 	  defined.
